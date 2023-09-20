@@ -67,16 +67,15 @@ class Exercici_2_2_Pantalla : JFrame() {
             // Instruccions per a bolcar el contingut del fitxer en el JTextArea
 
         }
-
         guardar.addActionListener {
+            val routeText = fitxer.text.trim()
+            val file = File(routeText)
             // Instruccions per a guardar el contingut del JTextArea al fitxer.
-
         }
     }
 }
 
 private fun crearMostrarFinestra() {
-
     val frame = Exercici_2_2_Pantalla()
     frame.isVisible = true
 }
