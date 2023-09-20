@@ -70,6 +70,8 @@ class Exercici_2_2_Pantalla : JFrame() {
         guardar.addActionListener {
             val routeText = fitxer.text.trim()
             val file = File(routeText)
+            val content = area.text
+            file.writeText(content)
             // Instruccions per a guardar el contingut del JTextArea al fitxer.
         }
     }
