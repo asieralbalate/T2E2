@@ -6,7 +6,7 @@ import java.io.BufferedReader
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileReader
-import java.lang.StringBuilder
+import java.lang.StringBuilder as StringBuilder
 
 class Exercici_2_2_Pantalla : JFrame() {
     val et_f = JLabel("Fitxer:")
@@ -44,34 +44,19 @@ class Exercici_2_2_Pantalla : JFrame() {
 
         obrir.addActionListener {
 
-            val routeText = fitxer.text.trim()
-            val file = File(routeText)
-
-            if (file.exists() && file.isFile){
-                val input = BufferedReader(FileReader(file))
-                var content = ""
-                var line: String
-
-                line = input.readLine()
-                while (input.readLine() != null) {
-                    content += line
-                    line = input.readLine()
-                }
-                input.close()
-                area.text = content
+            if (fitxer.getText() != "") {
+                val f = File(fitxer.getText())
+                if (f.exists() && f.isFile)
+                    area.text = f.readText()
             }
-            else {
-                println("No existe o no se encuentra")
-            }
-
             // Instruccions per a bolcar el contingut del fitxer en el JTextArea
-
         }
+
         guardar.addActionListener {
-            val routeText = fitxer.text.trim()
-            val file = File(routeText)
-            val content = area.text
-            file.writeText(content)
+            if (fitxer.getText() != "") {
+                val f = File(fitxer.getText())
+                f.writeText(area.text)
+            }
             // Instruccions per a guardar el contingut del JTextArea al fitxer.
         }
     }
